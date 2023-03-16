@@ -20,6 +20,6 @@ public class GenreController {
 
     @GetMapping
     public Genres getAllGenres() throws IOException {
-        return genreService.getGenresFromApi();
+        return genreService.getGenres();
     }
 }

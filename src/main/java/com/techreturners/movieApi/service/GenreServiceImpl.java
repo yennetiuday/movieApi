@@ -37,9 +37,4 @@ public class GenreServiceImpl implements GenreService {
         }
         return Genres.builder().results(genres).build();
     }
-
-    @Override
-    public Genres getGenresFromApi() throws IOException {
-        return genreApiProxy.retrieveGenres();
-    }
 }
