@@ -8,6 +8,4 @@ public interface GenreService {
     void saveGenres() throws IOException;
 
     Genres getGenres();
-
-    Genres getGenresFromApi() throws IOException;
 }
