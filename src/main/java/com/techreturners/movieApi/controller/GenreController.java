@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("genres")
+@RequestMapping("/api/v1/genres")
 public class GenreController {
 
     @Autowired

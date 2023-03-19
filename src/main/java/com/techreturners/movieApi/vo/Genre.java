@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class Genre {
     String genre;
 
-    public Genre convertDaoToVO(GenreDao dao) {
+    public static Genre convertDaoToVO(GenreDao dao) {
         return new Genre(dao.getName());
     }
 }
