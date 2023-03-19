@@ -1,7 +1,7 @@
 package com.techreturners.movieApi.apiProxy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.techreturners.movieApi.Util.Util;
+import static com.techreturners.movieApi.Util.UtilConstants.*;
 import com.techreturners.movieApi.vo.Genres;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpMethod;
@@ -18,14 +18,14 @@ public class GenreApiProxyImpl implements GenreApiProxy {
 
     @Override
     public Genres retrieveGenres() throws IOException {
-        String apiUrl = Util.BASE_URL+Util.GENRES;
+        String apiUrl = BASE_URL+ GENRES;
         URL url = new URL(apiUrl);
 
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod(HttpMethod.GET.name());
-        connection.setRequestProperty(Util.X_RAPIDAPI_KEY, Util.X_RAPIDAPI_KEY_VALUE);
-        connection.setRequestProperty(Util.X_RAPIDAPI_HOST, Util.X_RAPIDAPI_HOST_VALUE);
-        connection.setRequestProperty(Util.ACCEPT, Util.APPLICATION_JSON);
+        connection.setRequestProperty(X_RAPIDAPI_KEY, X_RAPIDAPI_KEY_VALUE);
+        connection.setRequestProperty(X_RAPIDAPI_HOST, X_RAPIDAPI_HOST_VALUE);
+        connection.setRequestProperty(ACCEPT, APPLICATION_JSON);
 
         int responseCode = connection.getResponseCode();
         if(responseCode != HttpStatus.OK.value()) {

@@ -41,7 +41,7 @@ public class GenreServiceImpl implements GenreService {
     public Genres getGenres() {
         List<Genre> genres = new ArrayList<>();
         for (GenreDao genreDao: genreRepository.findAll()) {
-            genres.add(new Genre().convertDaoToVO(genreDao));
+            genres.add(Genre.convertDaoToVO(genreDao));
         }
         return Genres.builder().results(genres).build();
     }
