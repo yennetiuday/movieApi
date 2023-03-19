@@ -1,4 +1,4 @@
-package com.techreturners.movieApi.Util;
+package com.techreturners.movieApi.util;
 
 public interface UtilConstants {
     String X_RAPIDAPI_KEY = "X-Rapidapi-Key";
