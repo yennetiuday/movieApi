@@ -1,7 +1,7 @@
 package com.techreturners.movieApi.apiProxy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import static com.techreturners.movieApi.Util.UtilConstants.*;
+import static com.techreturners.movieApi.util.UtilConstants.*;
 import com.techreturners.movieApi.vo.Genres;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
