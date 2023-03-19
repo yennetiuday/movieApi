@@ -1,37 +1,41 @@
 package com.techreturners.movieApi.apiProxy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.techreturners.movieApi.Util.Util;
+import static com.techreturners.movieApi.Util.UtilConstants.*;
 import com.techreturners.movieApi.vo.Genres;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
+import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 @Service
+@NoArgsConstructor
 @AllArgsConstructor
 public class GenreApiProxyImpl implements GenreApiProxy {
 
+    @Value("${x.rapidapi.key.value}")
+    private String X_RAPIDAPI_KEY_VALUE;
+
     @Override
     public Genres retrieveGenres() throws IOException {
-        String apiUrl = Util.BASE_URL+Util.GENRES;
-        URL url = new URL(apiUrl);
+        String apiUrl = BASE_URL+ GENRES;
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
 
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod(HttpMethod.GET.name());
-        connection.setRequestProperty(Util.X_RAPIDAPI_KEY, Util.X_RAPIDAPI_KEY_VALUE);
-        connection.setRequestProperty(Util.X_RAPIDAPI_HOST, Util.X_RAPIDAPI_HOST_VALUE);
-        connection.setRequestProperty(Util.ACCEPT, Util.APPLICATION_JSON);
+        headers.set(X_RAPIDAPI_KEY, X_RAPIDAPI_KEY_VALUE);
+        headers.set(X_RAPIDAPI_HOST, X_RAPIDAPI_HOST_VALUE);
+        HttpEntity<String> entity = new HttpEntity<>("body", headers);
+        ResponseEntity<String> response = restTemplate.exchange(apiUrl, HttpMethod.GET, entity, String.class);
 
-        int responseCode = connection.getResponseCode();
+        int responseCode = response.getStatusCode().value();
         if(responseCode != HttpStatus.OK.value()) {
             throw new RuntimeException("Failed: HTTP error Code: "+ responseCode);
         }
 
-        return (new ObjectMapper()).readValue(connection.getInputStream(), Genres.class);
+        return (new ObjectMapper()).readValue(response.getBody(), Genres.class);
     }
 }

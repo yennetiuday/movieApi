@@ -15,12 +15,4 @@ import java.util.List;
 @Builder
 public class Genres {
     List<Genre> results;
-
-    public List<GenreDao> convertToDAO(Genres genres) {
-        List<GenreDao> genreDaos = new ArrayList<>();
-        for (Genre genre: genres.getResults()) {
-            genreDaos.add(GenreDao.builder().name(genre.getGenre()).build());
-        }
-        return genreDaos;
-    }
 }

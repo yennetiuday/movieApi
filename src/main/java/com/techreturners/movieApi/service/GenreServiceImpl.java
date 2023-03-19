@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -25,21 +26,23 @@ public class GenreServiceImpl implements GenreService {
 
     @Override
     public void saveGenres() throws IOException {
+        List<GenreDao> genreDaos = new ArrayList<>();
         Genres genres = genreApiProxy.retrieveGenres();
-        genreRepository.saveAll(new Genres().convertToDAO(genres));
+        for (Genre genre: genres.getResults()) {
+            GenreDao genreDao = genreRepository.findByName(genre.getGenre());
+            if(Objects.isNull(genreDao)) {
+                genreDaos.add(GenreDao.builder().name(genre.getGenre()).build());
+            }
+        }
+        genreRepository.saveAll(genreDaos);
     }
 
     @Override
     public Genres getGenres() {
         List<Genre> genres = new ArrayList<>();
         for (GenreDao genreDao: genreRepository.findAll()) {
-            genres.add(new Genre().convertDaoToVO(genreDao));
+            genres.add(Genre.convertDaoToVO(genreDao));
         }
         return Genres.builder().results(genres).build();
-    }
-
-    @Override
-    public Genres getGenresFromApi() throws IOException {
-        return genreApiProxy.retrieveGenres();
     }
 }
