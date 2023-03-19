@@ -7,8 +7,6 @@ public class Util {
     public static final String X_RAPIDAPI_HOST_VALUE = "moviesminidatabase.p.rapidapi.com";
     public static final String BASE_URL = "https://moviesminidatabase.p.rapidapi.com/";
     public static final String GENRES = "genres";
-
-    public static final String MOVIES = "movies";
     public static final String ACCEPT = "Accept";
     public static final String APPLICATION_JSON = "application/json";
 }
