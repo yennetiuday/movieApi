@@ -1,6 +1,5 @@
 package com.techreturners.movieApi.vo;
 
-import com.techreturners.movieApi.dao.MovieDao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,11 +15,9 @@ import java.util.List;
 public class Movies {
     List<Movie> results;
 
-    public List<MovieDao> convertToDao(Movies movies){
-        List<MovieDao> movieDaos = new ArrayList<>();
-        for(Movie movie: movies.getResults()){
-            movieDaos.add(MovieDao.builder().name(movie.getMovie()).build());
-        }
-        return movieDaos;
+    public void setTitle(String movie) {
+    }
+
+    public void setYear(Long year) {
     }
 }

@@ -17,7 +17,7 @@ import static org.mockito.Mockito.*;
 
 @AutoConfigureMockMvc
 @SpringBootTest
-class GenreServiceImplTest {
+public class GenreServiceImplTest {
 
     @Mock
     private GenreRepository mockGenreRepository;

@@ -14,5 +14,5 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Genres {
-    List<Genre> results;
+    private List<Genre> results;
 }
