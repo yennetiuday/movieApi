@@ -36,7 +36,6 @@ public class GenreServiceImpl implements GenreService {
         }
         genreRepository.saveAll(genreDaos);
     }
-
     @Override
     public Genres getGenres() {
         List<Genre> genres = new ArrayList<>();

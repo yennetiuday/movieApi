@@ -1,38 +1,31 @@
 package com.techreturners.movieApi.service;
 
 
-import com.techreturners.movieApi.dao.MovieDao;
-import com.techreturners.movieApi.repository.GenreRepository;
+import com.techreturners.movieApi.apiProxy.MovieApiProxy;
 import com.techreturners.movieApi.repository.MovieRepository;
+import com.techreturners.movieApi.vo.Movie;
 import com.techreturners.movieApi.vo.Movies;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.Optional;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
-public class MovieServiceImpl implements MovieService{
+public class MovieServiceImpl implements MovieService {
+    @Autowired
+    MovieApiProxy movieApiProxy;
 
     @Autowired
     MovieRepository movieRepository;
 
-
     @Override
-    public void saveMovies() throws IOException {
-
-    }
-
-    @Override
-    public Optional<MovieDao> getMovieByYear(Long year) {
-        Optional<MovieDao> movies = movieRepository.findByYear(year);
-        return movies;
-    }
-
-    @Override
-    public Movies getMoviesFromApi() throws IOException {
-        return null;
+    public Movies getMovieByYear(Long year) throws IOException {
+        return movieApiProxy.retriveMoviesByYear(year);
     }
 }
+
