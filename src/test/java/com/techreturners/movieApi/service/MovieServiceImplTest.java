@@ -1,7 +1,6 @@
 package com.techreturners.movieApi.service;
 
 import com.techreturners.movieApi.apiProxy.MovieApiProxy;
-import com.techreturners.movieApi.repository.MovieRepository;
 import com.techreturners.movieApi.vo.Movies;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,10 +19,6 @@ import java.io.IOException;
 public class MovieServiceImplTest {
     @Mock
     private MovieApiProxy movieApiProxy;
-
-    @Mock
-    private MovieRepository movieRepository;
-
     @InjectMocks
     private MovieServiceImpl movieServiceImpl;
 
