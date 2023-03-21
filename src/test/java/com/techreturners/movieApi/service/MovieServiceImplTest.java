@@ -19,10 +19,6 @@ import java.io.IOException;
 public class MovieServiceImplTest {
     @Mock
     private MovieApiProxy movieApiProxy;
-
-    @Mock
-    private MovieRepository movieRepository;
-
     @InjectMocks
     private MovieServiceImpl movieServiceImpl;
 
