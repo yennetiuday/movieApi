@@ -6,4 +6,5 @@ public interface UtilConstants {
     String X_RAPIDAPI_HOST_VALUE = "moviesminidatabase.p.rapidapi.com";
     String BASE_URL = "https://moviesminidatabase.p.rapidapi.com/";
     String GENRES = "genres";
+    String MOVIES = "movies";
 }

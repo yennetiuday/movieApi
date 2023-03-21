@@ -1,14 +1,9 @@
 package com.techreturners.movieApi.repository;
 
-import com.techreturners.movieApi.dao.MovieDao;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.techreturners.movieApi.vo.Movies;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+public interface MovieRepository extends CrudRepository<Movies, String>  {
 
-@Repository
-public interface MovieRepository extends CrudRepository<MovieDao, Long>,JpaRepository<MovieDao, Long> {
-
-    Optional<MovieDao> findByYear(Long year);
+    Movies findByYear(Long year);
 }
