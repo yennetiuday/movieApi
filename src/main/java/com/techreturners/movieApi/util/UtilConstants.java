@@ -7,4 +7,6 @@ public interface UtilConstants {
     String BASE_URL = "https://moviesminidatabase.p.rapidapi.com/";
     String GENRES = "genres";
     String MOVIES = "movies";
+    String ACTOR_BY_NAME = "actor/imdb_id_byName/";
+    String ACTOR_DETAILS_BY_IMDB_ID = "actor/id/";
 }

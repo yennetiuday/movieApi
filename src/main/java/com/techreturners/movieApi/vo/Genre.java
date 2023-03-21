@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Genre {
-    String genre;
+    private String genre;
 
     public static Genre convertDaoToVO(GenreDao dao) {
         return new Genre(dao.getName());

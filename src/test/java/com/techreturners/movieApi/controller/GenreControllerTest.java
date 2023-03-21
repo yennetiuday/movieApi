@@ -44,10 +44,10 @@ class GenreControllerTest {
         results.add(new Genre("Action"));
         results.add(new Genre("Fiction"));
         results.add(new Genre("Animated"));
-
         Genres genres = Genres.builder().results(results).build();
 
         Mockito.when(genreService.getGenres()).thenReturn(genres);
+
         this.mockMvcController.perform(MockMvcRequestBuilders.get("/api/v1/genres/"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("results[0].genre").value("Action"))
