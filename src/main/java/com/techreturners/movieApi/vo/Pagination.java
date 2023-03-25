@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-public class Movie {
-    String title;
-    String imdb_id;
+public class Pagination {
+    private String next;
+    private String previous;
 }
