@@ -13,11 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class Movies {
+    Pagination links;
     List<Movie> results;
-
-    public void setTitle(String movie) {
-    }
-
-    public void setYear(Long year) {
-    }
+    int count;
 }
