@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -21,13 +18,12 @@ public class MovieController {
     @Autowired
     MovieService movieService;
 
-    @GetMapping
-    @RequestMapping(path = "{movies}")
-    public ResponseEntity<?> getMovieByYear(@PathVariable("movies") Long year) {
+    @GetMapping(path="{year}")
+    public ResponseEntity<?> getMovieByYear(@PathVariable("year") Long year,
+                                            @RequestParam(value = "page", defaultValue = "1") int page) {
         Movies movies;
-        try
-        {
-            movies = movieService.getMovieByYear(year);
+        try {
+            movies = movieService.getMovieByYear(year, page);
             return ResponseEntity.ok(movies);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Retrieving Movies.");

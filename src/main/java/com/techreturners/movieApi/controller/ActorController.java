@@ -19,8 +19,7 @@ public class ActorController {
     @Autowired
     private ActorService actorService;
 
-    @GetMapping
-    @RequestMapping(path = "{name}")
+    @GetMapping(path = "{name}")
     public ResponseEntity<?> getActorsByName(@PathVariable("name") String name) {
         Actors actors;
         try {

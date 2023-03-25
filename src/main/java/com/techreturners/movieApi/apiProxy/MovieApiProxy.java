@@ -6,5 +6,5 @@ import java.io.IOException;
 
 public interface MovieApiProxy {
 
-    Movies retriveMoviesByYear(Long year) throws IOException;
+    Movies retriveMoviesByYear(Long year, Integer page) throws IOException;
 }
