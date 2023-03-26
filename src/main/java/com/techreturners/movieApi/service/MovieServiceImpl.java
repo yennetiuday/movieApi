@@ -16,8 +16,8 @@ public class MovieServiceImpl implements MovieService {
     MovieApiProxy movieApiProxy;
 
     @Override
-    public Movies getMovieByYear(Long year) throws IOException {
-        return movieApiProxy.retriveMoviesByYear(year);
+    public Movies getMovieByYear(Long year, Integer page) throws IOException {
+        return movieApiProxy.retriveMoviesByYear(year, page);
     }
 }
 
