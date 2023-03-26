@@ -14,7 +14,10 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,22 +36,26 @@ public class MovieServiceImplTest {
     }
 
     @Test
-    void shouldReturnMoviesByYear() throws IOException {
+    public void testGetMovieByYear() throws Exception {
         Long year = 2022L;
-        Movies movies = new Movies();
-//        movies.setTitle("Movie1");
-//        movies.setYear(year);
-//
-//        when(movieApiProxy.retriveMoviesByYear(year)).thenReturn(movies);
-//
-//        Movies actualMovies = movieServiceImpl.getMovieByYear(year);
-//        assertThat(actualMovies).isEqualTo(movies);
+        Integer page = 1;
+        Movies expectedMovies = new Movies();
+        // mock the behavior of the movieApiProxy instance
+        when(movieApiProxy.retriveMoviesByYear(year, page)).thenReturn(expectedMovies);
+
+        // call the method to be tested
+        Movies actualMovies = movieServiceImpl.getMovieByYear(year, page);
+
+        // assert that the method returns the expected result
+        assertEquals(expectedMovies, actualMovies);
+
+        // verify that the movieApiProxy was called with the correct arguments
+        verify(movieApiProxy).retriveMoviesByYear(year, page);
     }
 
 
-
     @Test
-    void testMovieOrderByRating() throws Exception{
+    void testMovieOrderByRating() throws Exception {
         List<Movie> movies = new ArrayList<>();
         movies.add(Movie.builder().imdb_id("1").title("test").rating(9.1f).build());
         Movies expectedMovies = Movies.builder().results(movies).build();
@@ -65,7 +72,7 @@ public class MovieServiceImplTest {
     }
 
     @Test
-    void testMovieIdByTitle() throws Exception{
+    void testMovieIdByTitle() throws Exception {
         List<Movie> movies = new ArrayList<>();
         movies.add(Movie.builder().imdb_id("1").title("test").build());
 
