@@ -62,7 +62,10 @@ After group discussion,
 ### <ins> To improve </ins>
 
   Create features like recommended Movie based on weather , mood.
+  
   Create User Profile and authentication for users.
+  
   Movie recommendation according to age of User
+  
   To add actors and directors information in the movie database so that user can get data based on actors and directors.
 
