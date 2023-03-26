@@ -31,7 +31,6 @@ public class MovieApiProxyImpl extends ApiProxyBase<Movies> implements MovieApiP
         }
         return movies;
     }
-
     private static String getPaginationLink(String link, Long year) {
         if(Objects.nonNull(link)) {
             MultiValueMap<String, String> params = UriComponentsBuilder.fromUriString(link).build().getQueryParams();
@@ -43,6 +42,27 @@ public class MovieApiProxyImpl extends ApiProxyBase<Movies> implements MovieApiP
             }
         }
         return null;
+    }
+
+
+
+
+
+
+
+    @Override
+    public Movies retriveMoviesOrderByRating() throws IOException {
+
+        String apiUrl = BASE_URL + MOVIES + ORDER_BY_RATING;
+
+        return retrieveData(apiUrl);
+    }
+
+    @Override
+    public Movies retriveMovieIdByTitle(String title) throws IOException{
+        String apiUrl = BASE_URL + MOVIES + MOVIEID_BY_TITLE+title;
+        return retrieveData(apiUrl);
+
     }
 
     @Override

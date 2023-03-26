@@ -19,5 +19,15 @@ public class MovieServiceImpl implements MovieService {
     public Movies getMovieByYear(Long year, Integer page) throws IOException {
         return movieApiProxy.retriveMoviesByYear(year, page);
     }
+
+    @Override
+    public Movies getMovieOrderByRating() throws IOException{
+        return movieApiProxy.retriveMoviesOrderByRating();
+    }
+
+    @Override
+    public Movies getMovieIdByTitle(String title) throws IOException{
+        return movieApiProxy.retriveMovieIdByTitle(title);
+    }
 }
 

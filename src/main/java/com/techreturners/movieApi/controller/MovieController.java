@@ -1,6 +1,7 @@
 package com.techreturners.movieApi.controller;
 
 import com.techreturners.movieApi.service.MovieService;
+import com.techreturners.movieApi.vo.Actors;
 import com.techreturners.movieApi.vo.Movies;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,30 @@ public class MovieController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Retrieving Movies.");
         }
     }
+
+    @GetMapping({"/order/byRating/"})
+    public ResponseEntity<?> getMovieOrderByRating() {
+        Movies movies;
+        try {
+            movies = movieService.getMovieOrderByRating();
+            return ResponseEntity.ok(movies);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Retrieving Movies Order by Rating.");
+        }
+    }
+
+        @GetMapping({"/imdb_id/byTitle/{title}"})
+        public ResponseEntity<?> getMovieIdByTitle(@PathVariable("title") String title){
+            Movies movies;
+            try{
+                movies = movieService.getMovieIdByTitle(title);
+                return ResponseEntity.ok(movies);
+            }  catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Retrieving Movies Id by Title.");
+            }
+
+    }
+
+
+
 }

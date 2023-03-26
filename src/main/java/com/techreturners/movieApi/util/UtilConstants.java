@@ -10,5 +10,8 @@ public interface UtilConstants {
     String MOVIES = "movie";
     String ACTOR_BY_NAME = "actor/imdb_id_byName/";
     String ACTOR_DETAILS_BY_IMDB_ID = "actor/id/";
+
+    String ORDER_BY_RATING = "/order/byRating/";
+    String MOVIEID_BY_TITLE = "/imdb_id/byTitle/";
 }
 

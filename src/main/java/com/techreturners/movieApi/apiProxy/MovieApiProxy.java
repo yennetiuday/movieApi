@@ -7,4 +7,6 @@ import java.io.IOException;
 public interface MovieApiProxy {
 
     Movies retriveMoviesByYear(Long year, Integer page) throws IOException;
+    Movies retriveMoviesOrderByRating() throws IOException;
+    Movies retriveMovieIdByTitle(String title) throws IOException;
 }
