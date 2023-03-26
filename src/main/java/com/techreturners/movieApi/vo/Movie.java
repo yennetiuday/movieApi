@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class Movie {
     String title;
     String imdb_id;
+    float rating;
 }
