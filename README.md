@@ -114,4 +114,5 @@ To run the tests, use the following command:
  
  - Deployment to AWS
  
+ - Create Frontend for the application.
  
