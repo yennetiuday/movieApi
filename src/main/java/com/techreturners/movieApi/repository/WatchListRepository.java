@@ -1,7 +1,6 @@
 package com.techreturners.movieApi.repository;
 
 import com.techreturners.movieApi.dao.WatchListDao;
-import com.techreturners.movieApi.vo.Movie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

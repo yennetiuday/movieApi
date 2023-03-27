@@ -48,7 +48,7 @@ MovieControllerTest {
         Mockito.when(movieServiceMock.getMovieByYear(year, page)).thenReturn(expectedMovies);
 
         this.mockMvc.perform(
-                        MockMvcRequestBuilders.get("/api/v1/movie/" + year))
+                        MockMvcRequestBuilders.get("/api/v1/movie/byYear/" + year))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 

@@ -15,7 +15,7 @@ public class WatchListController {
     @Autowired
     private WatchListService watchListService;
 
-    @GetMapping("/movies")
+    @GetMapping("movies")
     public ResponseEntity<?> getMovies() {
         List<Movie> movies;
         try {
@@ -36,7 +36,7 @@ public class WatchListController {
         }
     }
 
-    @DeleteMapping("/{imdbId}")
+    @DeleteMapping("{imdbId}")
     public ResponseEntity<Void> deleteMovie(@PathVariable("imdbId") String imdbId) {
         try {
             watchListService.deleteMovieByImdbId(imdbId);
