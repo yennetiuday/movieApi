@@ -13,7 +13,7 @@ public class MovieController {
     @Autowired
     MovieService movieService;
 
-    @GetMapping(path="{year}")
+    @GetMapping(path="byYear/{year}")
     public ResponseEntity<?> getMovieByYear(@PathVariable("year") Long year,
                                             @RequestParam(value = "page", defaultValue = "1") int page) {
         Movies movies;
@@ -25,7 +25,7 @@ public class MovieController {
         }
     }
 
-    @GetMapping({"/order/byRating"})
+    @GetMapping({"order/byRating"})
     public ResponseEntity<?> getMovieOrderByRating() {
         Movies movies;
         try {
@@ -36,7 +36,7 @@ public class MovieController {
         }
     }
 
-    @GetMapping({"/imdb_id/byTitle/{title}"})
+    @GetMapping({"imdb_id/byTitle/{title}"})
     public ResponseEntity<?> getMovieIdByTitle(@PathVariable("title") String title) {
         Movies movies;
         try{
@@ -47,7 +47,7 @@ public class MovieController {
         }
     }
 
-    @GetMapping({"/byGenre/{genre}"})
+    @GetMapping({"byGenre/{genre}"})
     public ResponseEntity<?> getMovieIdByGenre(@PathVariable("genre") String genre,
                                                @RequestParam(value = "page", defaultValue = "1") int page) {
         Movies movies;

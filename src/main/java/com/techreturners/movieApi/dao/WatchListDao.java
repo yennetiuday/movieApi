@@ -31,11 +31,5 @@ public class WatchListDao {
         this.title = title;
     }
 
-//    public void setImdbId(Long imdb_id) {
-//    }
-//
-//    public void setTitle(String title) {
-//    }
-
 }
 
