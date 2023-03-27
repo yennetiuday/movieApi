@@ -2,7 +2,7 @@
 
 ### <ins>Goal of the application</ins>
 
-- Movies API to get movie recommendations based on inputted criteria year/genre/actor/ratings.
+- Movies API to get movie details based on inputted criteria year/genre/actor/ratings and add it to Watch List
 
 
 ### <ins>Movies API Business Requirements</ins>
@@ -13,10 +13,12 @@
 - Descriptive README to document the key features of your solution, your assumptions, approaches and future thoughts.
 - API endpoints well documented.
 - Error and exception handling considerations included.
+- Create watchlist to save movie
 
 ### <ins>Acceptance Criteria and Assumptions</ins>
 
-- Movie API should return the movie recommendations based on the search criteria.
+- Movie API should return the movie results based on the search criteria.
+- Watch List to save movie details for User
 
 
 ### <ins>Key Features of the application</ins>
@@ -33,13 +35,13 @@
 - Step One:
 
 After group discussion,
- - scope of the project
+   scope of the project
  
- - the tools to be used
+   the tools to be used
   
- - technologies to be used (java, junit 5, maven, postgresSQL )
+   technologies to be used (java, junit 5, maven, postgresSQL )
  
- - standup calls at 10 am everyday
+   standup calls at 10 am everyday
 
 - Step Two:
 
@@ -86,6 +88,13 @@ After group discussion,
 
 ### <ins>How to run the application and tests</ins>
 
+To run this application - run from "MovieApiApplication.java"
+
+Access the API from Postman (or browser)
+
+Runs from http://localhost:8081/api/v1/
+For endpoints and usage, see below:
+
 To run the tests, use the following command:
 
     mvn test
@@ -97,9 +106,12 @@ To run the tests, use the following command:
 
  - Create features like recommended Movie based on weather , mood.
   
- - Create User Profile and authentication for users.
+ - Create User Profile and authentication for users and implement Spring Security.
   
  - Movie recommendation according to age of User
   
  - To add actors and directors information in the movie database so that user can get data based on actors and directors.
-
+ 
+ - Deployment to AWS
+ 
+ 
