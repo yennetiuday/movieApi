@@ -25,30 +25,24 @@ public class MovieApiProxyImpl extends ApiProxyBase<Movies> implements MovieApiP
         Movies movies = retrieveData(apiUrl+apiEndpoint);
         if(Objects.nonNull(movies) && Objects.nonNull(movies.getLinks())) {
             Pagination links = new Pagination();
-            links.setNext(getPaginationLink(movies.getLinks().getNext(), year));
-            links.setPrevious(getPaginationLink(movies.getLinks().getPrevious(), year));
+            links.setNext(getPaginationLink(movies.getLinks().getNext(), "byYear/"+year));
+            links.setPrevious(getPaginationLink(movies.getLinks().getPrevious(), "byYear/"+year));
             movies.setLinks(links);
         }
         return movies;
     }
-    private static String getPaginationLink(String link, Long year) {
+    private static String getPaginationLink(String link, String url) {
         if(Objects.nonNull(link)) {
             MultiValueMap<String, String> params = UriComponentsBuilder.fromUriString(link).build().getQueryParams();
             List<String> pages = params.get("page");
             if(Objects.nonNull(pages) && !pages.isEmpty()) {
-                return String.format("%smovie/%s?page=%s", APP_BASE_URL, year, params.get("page").get(0));
+                return String.format("%smovie/%s?page=%s", APP_BASE_URL, url, params.get("page").get(0));
             } else {
-                return String.format("%smovie/%s", APP_BASE_URL, year);
+                return String.format("%smovie/%s", APP_BASE_URL, url);
             }
         }
         return null;
     }
-
-
-
-
-
-
 
     @Override
     public Movies retriveMoviesOrderByRating() throws IOException {
@@ -62,7 +56,20 @@ public class MovieApiProxyImpl extends ApiProxyBase<Movies> implements MovieApiP
     public Movies retriveMovieIdByTitle(String title) throws IOException{
         String apiUrl = BASE_URL + MOVIES + MOVIEID_BY_TITLE+title;
         return retrieveData(apiUrl);
+    }
 
+    @Override
+    public Movies retriveMoviesByGenre(String genre, Integer page) throws IOException {
+        String apiUrl = BASE_URL + MOVIES + "/byGen/"+genre;
+        String apiEndpoint = Objects.nonNull(page)? "/?page="+page : "";
+        Movies movies = retrieveData(apiUrl+ apiEndpoint);
+        if(Objects.nonNull(movies) && Objects.nonNull(movies.getLinks())) {
+            Pagination links = new Pagination();
+            links.setNext(getPaginationLink(movies.getLinks().getNext(), "byGenre/"+genre));
+            links.setPrevious(getPaginationLink(movies.getLinks().getPrevious(), "byGenre/"+genre));
+            movies.setLinks(links);
+        }
+        return movies;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.techreturners.movieApi.controller;
 
-
 import com.techreturners.movieApi.service.WatchListService;
 import com.techreturners.movieApi.vo.Movie;
 import org.junit.Test;
