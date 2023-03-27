@@ -7,5 +7,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WatchListRepository extends JpaRepository<WatchListDao, Long> {
 
-    WatchListDao findByMovieName(String movieName);
+    WatchListDao findByTitle(String title);
+
+    WatchListDao findByImdbId(String imdbId);
+
 }

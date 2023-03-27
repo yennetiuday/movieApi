@@ -1,6 +1,7 @@
 package com.techreturners.movieApi.service;
 
 import com.techreturners.movieApi.apiProxy.MovieApiProxy;
+import com.techreturners.movieApi.vo.Genre;
 import com.techreturners.movieApi.vo.Movie;
 import com.techreturners.movieApi.vo.Movies;
 import org.assertj.core.api.Assertions;
@@ -13,9 +14,10 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,8 @@ public class MovieServiceImplTest {
     private MovieApiProxy movieApiProxy;
     @InjectMocks
     private MovieServiceImpl movieServiceImpl;
+    @Mock
+    private GenreServiceImpl genreServiceImpl;
 
     @BeforeEach
     void setUp() {
@@ -33,22 +37,26 @@ public class MovieServiceImplTest {
     }
 
     @Test
-    void shouldReturnMoviesByYear() throws IOException {
+    public void testGetMovieByYear() throws Exception {
         Long year = 2022L;
-        Movies movies = new Movies();
-//        movies.setTitle("Movie1");
-//        movies.setYear(year);
-//
-//        when(movieApiProxy.retriveMoviesByYear(year)).thenReturn(movies);
-//
-//        Movies actualMovies = movieServiceImpl.getMovieByYear(year);
-//        assertThat(actualMovies).isEqualTo(movies);
+        Integer page = 1;
+        Movies expectedMovies = new Movies();
+        // mock the behavior of the movieApiProxy instance
+        when(movieApiProxy.retriveMoviesByYear(year, page)).thenReturn(expectedMovies);
+
+        // call the method to be tested
+        Movies actualMovies = movieServiceImpl.getMovieByYear(year, page);
+
+        // assert that the method returns the expected result
+        assertEquals(expectedMovies, actualMovies);
+
+        // verify that the movieApiProxy was called with the correct arguments
+        verify(movieApiProxy).retriveMoviesByYear(year, page);
     }
 
 
-
     @Test
-    void testMovieOrderByRating() throws Exception{
+    void testMovieOrderByRating() throws Exception {
         List<Movie> movies = new ArrayList<>();
         movies.add(Movie.builder().imdb_id("1").title("test").rating(9.1f).build());
         Movies expectedMovies = Movies.builder().results(movies).build();
@@ -65,7 +73,7 @@ public class MovieServiceImplTest {
     }
 
     @Test
-    void testMovieIdByTitle() throws Exception{
+    void testMovieIdByTitle() throws Exception {
         List<Movie> movies = new ArrayList<>();
         movies.add(Movie.builder().imdb_id("1").title("test").build());
 
@@ -79,12 +87,22 @@ public class MovieServiceImplTest {
         Assertions.assertThat(actualMovies.getResults().get(0).getTitle()).isEqualTo("test");
         Assertions.assertThat(actualMovies.getResults().get(0).getImdb_id()).isEqualTo("1");
     }
+
+    @Test
+    void testMovieByGenre() throws Exception {
+        List<Movie> movies = new ArrayList<>();
+        movies.add(Movie.builder().imdb_id("1").title("test").build());
+
+        Movies expectedMovies = Movies.builder().results(movies).build();
+        Mockito.when(movieApiProxy.retriveMoviesByGenre(Mockito.anyString(), Mockito.anyInt())).thenReturn(expectedMovies);
+
+        Genre expectedGenre = Genre.builder().genre("Action").build();
+        Mockito.when(genreServiceImpl.getGenreByName(Mockito.anyString())).thenReturn(expectedGenre);
+
+        Movies actualMovies = movieServiceImpl.getMoviesByGenre("test", 0);
+        Assertions.assertThat(actualMovies).isEqualTo(expectedMovies);
+        Assertions.assertThat(actualMovies.getResults().size()).isEqualTo(1);
+        Assertions.assertThat(actualMovies.getResults().get(0).getTitle()).isEqualTo("test");
+        Assertions.assertThat(actualMovies.getResults().get(0).getImdb_id()).isEqualTo("1");
+    }
 }
-
-
-
-
-
-
-
-

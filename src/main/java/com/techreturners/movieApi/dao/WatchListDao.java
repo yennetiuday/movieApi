@@ -3,10 +3,12 @@ package com.techreturners.movieApi.dao;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -19,9 +21,15 @@ public class WatchListDao {
     Long id;
 
     @Column(updatable = false, nullable = false)
-    Long imdb_id;
+    String imdbId;
 
     @Column(unique = true)
-    String movieName;
+    String title;
+
+    public WatchListDao(String imdbId, String title) {
+        this.imdbId = imdbId;
+        this.title = title;
+    }
+
 }
 

@@ -36,6 +36,7 @@ public class GenreServiceImpl implements GenreService {
         }
         genreRepository.saveAll(genreDaos);
     }
+
     @Override
     public Genres getGenres() {
         List<Genre> genres = new ArrayList<>();
@@ -43,5 +44,14 @@ public class GenreServiceImpl implements GenreService {
             genres.add(Genre.convertDaoToVO(genreDao));
         }
         return Genres.builder().results(genres).build();
+    }
+
+    @Override
+    public Genre getGenreByName(String genre) {
+        GenreDao dao = genreRepository.findByName(genre);
+        if(Objects.nonNull(dao)){
+            return Genre.builder().genre(dao.getName()).build();
+        }
+        return null;
     }
 }

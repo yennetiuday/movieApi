@@ -53,5 +53,4 @@ public class ActorServiceImplTest {
 
         Assertions.assertThat(actualActors).isEqualTo(expectedActors);
     }
-
 }
