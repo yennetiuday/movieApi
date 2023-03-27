@@ -53,7 +53,7 @@ MovieControllerTest {
     }
 
     @Test
-    void ShouldReturnMovieOrderByRating() throws Exception {
+    void ShouldReturnMovieOrderByRating() throws Exception{
         List<Movie> movies = new ArrayList<>();
         movies.add(Movie.builder().imdb_id("1").title("test").rating(9.1f).build());
 
@@ -61,27 +61,31 @@ MovieControllerTest {
 
         Mockito.when(movieService.getMovieOrderByRating()).thenReturn(expectedMovies);
 
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders.get("/api/v1/movie/order/byRating/"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/movie/order/byRating"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
-        //  .andExpect(MockMvcResultMatchers.jsonPath("results[0].imdb_id").value(""))
-        // .andExpect(MockMvcResultMatchers.jsonPath("results[0].title").value("test"))
-        //.andExpect(MockMvcResultMatchers.jsonPath("results[0].rating").value(9.1f));
 
     }
 
     @Test
-    void ShouldReturnMovieIdByTitle() throws Exception {
+    void ShouldReturnMovieIdByTitle() throws Exception{
         List<Movie> movies = new ArrayList<>();
         movies.add(Movie.builder().imdb_id("1").title("test").build());
 
         Movies expectedMovies = Movies.builder().results(movies).build();
         Mockito.when(movieService.getMovieIdByTitle(Mockito.anyString())).thenReturn(expectedMovies);
-        this.mockMvc.perform(
-                        MockMvcRequestBuilders.get("/api/v1/movie/order/byRating/"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/movie/imdb_id/byTitle/test"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
-        //.andExpect(MockMvcResultMatchers.jsonPath("results[0].imdb_id").value("tt10942302"));
+    }
 
+    @Test
+    void TestReturnMoviesByGenre() throws Exception {
+        List<Movie> movies = new ArrayList<>();
+        movies.add(Movie.builder().imdb_id("1").title("test").build());
+
+        Movies expectedMovies = Movies.builder().results(movies).build();
+        Mockito.when(movieService.getMoviesByGenre(Mockito.anyString(), Mockito.anyInt())).thenReturn(expectedMovies);
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/movie/byGenre/test"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 }
