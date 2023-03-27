@@ -44,27 +44,27 @@
  + Created UML Design
  + We made a github repo and pushed the code to git 
 
-- Step Three:
+# Step Three: #
 
  + Discussed the model and datatype to be used
  + Created Model, repository, controller
 
-- Step Four:
+# Step Four: #
 
- + Followed TDD Approach to create Movie Module and also configured Database.
- + Saving Genre Details in postgres Table
+ - Followed TDD Approach to create Movie Module and also configured Database.
+ - Saving Genre Details in postgres Table
 
-- Step Five:
+# Step Five:~
 
  + Test all apis through PostMan.
 
 ### <ins> To improve </ins>
 
- + Create features like recommended Movie based on weather , mood.
+ - Create features like recommended Movie based on weather , mood.
   
- + Create User Profile and authentication for users.
+ - Create User Profile and authentication for users.
   
- + Movie recommendation according to age of User
+ - Movie recommendation according to age of User
   
- + To add actors and directors information in the movie database so that user can get data based on actors and directors.
+ - To add actors and directors information in the movie database so that user can get data based on actors and directors.
 
