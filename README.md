@@ -31,20 +31,26 @@
 ### <ins>Approach to the solution</ins>
 
 - Step One:
+
   After group discussion,
 
- + scope of the project
- + the tools to be used 
- + technologies to be used (java, junit 5, maven, postgresSQL )
- + standup calls at 10 am everyday
+ - scope of the project
+ 
+ - the tools to be used
+  
+ - technologies to be used (java, junit 5, maven, postgresSQL )
+ 
+ - standup calls at 10 am everyday
 
 - Step Two:
 
- + We created the project structure.
- + Created UML Design
- + We made a github repo and pushed the code to git 
+  We created the project structure.
+  
+  Created UML Design
+  
+  We made a github repo and pushed the code to git 
 
-# Step Three: #
+- Step Three: 
 
  + Discussed the model and datatype to be used
  + Created Model, repository, controller
