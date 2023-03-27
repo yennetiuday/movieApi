@@ -31,8 +31,7 @@
 ### <ins>Approach to the solution</ins>
 
 - Step One:
-
-After group discussion,
+  After group discussion,
 
   scope of the project
   the tools to be used 
