@@ -32,8 +32,7 @@
 
 - Step One:
 
-  After group discussion,
-
+After group discussion,
  - scope of the project
  
  - the tools to be used
@@ -44,25 +43,55 @@
 
 - Step Two:
 
-  We created the project structure.
+    We created the project structure.
   
-  Created UML Design
+    Created UML Design
   
-  We made a github repo and pushed the code to git 
+    We made a github repo and pushed the code to git 
 
 - Step Three: 
 
- + Discussed the model and datatype to be used
- + Created Model, repository, controller
+    Discussed the model and datatype to be used
+    Created Model, repository, controller
 
-# Step Four: #
+- Step Four: 
 
- - Followed TDD Approach to create Movie Module and also configured Database.
- - Saving Genre Details in postgres Table
+    Followed TDD Approach to create Movie Module and also configured Database.
+    
+    Saving Genre Details in postgres Table
 
-# Step Five:~
+- Step Five:
 
- + Test all apis through PostMan.
+     Test all apis through PostMan.
+     
+     
+     
+     
+     
+ ### <ins>Technologies Used</ins>
+
+    Java
+    maven
+    JUnit 5
+    PostgresSQL
+   
+
+
+### <ins>Tools used in the project</ins>
+
+ 
+    Slack
+    Zoom
+
+
+### <ins>How to run the application and tests</ins>
+
+To run the tests, use the following command:
+
+    mvn test
+      
+     
+     
 
 ### <ins> To improve </ins>
 
