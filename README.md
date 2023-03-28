@@ -2,7 +2,8 @@
 
 ### <ins>Goal of the application</ins>
 
-- Movies API to get movie details based on inputted criteria year/genre/actor/ratings and add it to Watch List
+- Movies API to get movie details based on inputted criteria year/genre/actor/ratings and
+  add or delete movies to watch list for user
 
 
 ### <ins>Movies API Business Requirements</ins>
@@ -13,7 +14,7 @@
 - Descriptive README to document the key features of your solution, your assumptions, approaches and future thoughts.
 - API endpoints well documented.
 - Error and exception handling considerations included.
-- Create watchlist to save movie
+- Create watchlist to add movie
 
 ### <ins>Acceptance Criteria and Assumptions</ins>
 
@@ -93,7 +94,7 @@ To run this application - run from "MovieApiApplication.java"
 Access the API from Postman (or browser)
 
 Runs from http://localhost:8081/api/v1/
-For endpoints and usage, see below:
+
 
 To run the tests, use the following command:
 
