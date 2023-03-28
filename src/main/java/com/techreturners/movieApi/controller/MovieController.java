@@ -26,10 +26,10 @@ public class MovieController {
     }
 
     @GetMapping({"order/byRating"})
-    public ResponseEntity<?> getMovieOrderByRating() {
+    public ResponseEntity<?> getMovieOrderByRating(@RequestParam(value = "page", defaultValue = "1") int page) {
         Movies movies;
         try {
-            movies = movieService.getMovieOrderByRating();
+            movies = movieService.getMovieOrderByRating(page);
             return ResponseEntity.ok(movies);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error Retrieving Movies Order by Rating.");

@@ -25,8 +25,8 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public Movies getMovieOrderByRating() throws IOException{
-        return movieApiProxy.retriveMoviesOrderByRating();
+    public Movies getMovieOrderByRating(Integer page) throws IOException{
+        return movieApiProxy.retriveMoviesOrderByRating(page);
     }
 
     @Override
