@@ -30,6 +30,9 @@
 - Postman is used to interact with API
 - API health can be checked at /health endpoint
 
+### <ins> UML </ins>
+![MovieAPIrec](https://user-images.githubusercontent.com/120603284/228172682-3646214d-eba0-4464-8af3-a492f2208b69.png)
+
 
 ### <ins>Approach to the solution</ins>
 
