@@ -59,7 +59,7 @@ MovieControllerTest {
 
         Movies expectedMovies = Movies.builder().results(movies).build();
 
-        Mockito.when(movieService.getMovieOrderByRating()).thenReturn(expectedMovies);
+        Mockito.when(movieService.getMovieOrderByRating(Mockito.anyInt())).thenReturn(expectedMovies);
 
         this.mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/movie/order/byRating"))
                 .andExpect(MockMvcResultMatchers.status().isOk());

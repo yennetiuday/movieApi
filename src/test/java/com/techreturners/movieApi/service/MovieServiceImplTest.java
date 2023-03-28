@@ -61,10 +61,9 @@ public class MovieServiceImplTest {
         movies.add(Movie.builder().imdb_id("1").title("test").rating(9.1f).build());
         Movies expectedMovies = Movies.builder().results(movies).build();
 
-        Mockito.when(movieApiProxy.retriveMoviesOrderByRating()).thenReturn(expectedMovies);
+        Mockito.when(movieApiProxy.retriveMoviesOrderByRating(Mockito.anyInt())).thenReturn(expectedMovies);
 
-
-        Movies actualMovies = movieServiceImpl.getMovieOrderByRating();
+        Movies actualMovies = movieServiceImpl.getMovieOrderByRating(0);
 
         Assertions.assertThat(actualMovies).isEqualTo(expectedMovies);
         Assertions.assertThat(actualMovies.getResults().size()).isEqualTo(1);

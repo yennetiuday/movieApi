@@ -43,9 +43,7 @@ public class ActorServiceImplTest {
     @Test
     void testGetActorDetailsByImdbId() throws IOException {
         List<Actor> actors = new ArrayList<>();
-        actors.add(Actor.builder().imdb_id("1").name("test").image_url("test url").type("Person")
-                .birth_date("1956-07-09").birth_place("test place").partial_bio("test bio")
-                .height("1.83 m").star_sigh("test sign").build());
+        actors.add(Actor.builder().imdb_id("1").name("test").build());
         Actors expectedActors = Actors.builder().results(actors).build();
         Mockito.when(actorApiProxy.retrieveActorDetailsById(Mockito.anyString())).thenReturn(expectedActors);
 
