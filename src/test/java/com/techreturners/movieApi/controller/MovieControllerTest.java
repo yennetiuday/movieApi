@@ -12,6 +12,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -36,8 +37,10 @@ MovieControllerTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
-    public void getMovieByYear_shouldReturnOkResponseWhenMovieServiceReturnsMovies() throws Exception {
+  @WithMockUser(value = "spring")
+  @Test
+  public void getMovieByYear_shouldReturnOkResponseWhenMovieServiceReturnsMovies()
+      throws Exception {
         // Arrange
         Long year = 2022L;
         int page = 1;
@@ -52,6 +55,7 @@ MovieControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    @WithMockUser(value = "spring")
     @Test
     void ShouldReturnMovieOrderByRating() throws Exception{
         List<Movie> movies = new ArrayList<>();
@@ -66,6 +70,7 @@ MovieControllerTest {
 
     }
 
+    @WithMockUser(value = "spring")
     @Test
     void ShouldReturnMovieIdByTitle() throws Exception{
         List<Movie> movies = new ArrayList<>();
@@ -77,6 +82,7 @@ MovieControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
+    @WithMockUser(value = "spring")
     @Test
     void TestReturnMoviesByGenre() throws Exception {
         List<Movie> movies = new ArrayList<>();

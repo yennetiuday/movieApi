@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.test.context.support.WithMockUser;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
@@ -24,8 +25,9 @@ public class WatchListControllerTest {
     @InjectMocks
     private WatchListController watchListController;
 
-    @Test
-    public void testGetMovies() throws Exception {
+  @WithMockUser(value = "spring")
+  @Test
+  public void testGetMovies() throws Exception {
         // create a list of movies to be returned by the service
         List<Movie> movies = new ArrayList<>();
         Movie movie1 = new Movie("tt1234567", "Movie 1", null);
@@ -44,6 +46,7 @@ public class WatchListControllerTest {
         Assertions.assertEquals(movies, response.getBody());
     }
 
+    @WithMockUser(value = "spring")
     @Test
     public void testSaveMoviesToWatchList() {
         // Prepare test data
@@ -60,6 +63,7 @@ public class WatchListControllerTest {
         verify(watchListService, times(1)).saveMovies(any(Movie.class));
     }
 
+    @WithMockUser(value = "spring")
     @Test
     public void testDeleteMovie() {
         // Prepare test data
