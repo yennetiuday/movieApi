@@ -2,6 +2,8 @@ package com.techreturners.movieApi.controller;
 
 import com.techreturners.movieApi.service.WatchListService;
 import com.techreturners.movieApi.vo.Movie;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +17,9 @@ public class WatchListController {
     @Autowired
     private WatchListService watchListService;
 
-    @GetMapping("movies")
-    public ResponseEntity<?> getMovies() {
+  @GetMapping("movies")
+  @Operation(security = @SecurityRequirement(name = "bearerAuth"))
+  public ResponseEntity<?> getMovies() {
         List<Movie> movies;
         try {
             movies = watchListService.getMovieDetails();
@@ -27,6 +30,7 @@ public class WatchListController {
     }
 
     @PostMapping
+    @Operation(security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<Movie> saveMoviesToWatchList(@RequestBody Movie movie) {
         try {
            watchListService.saveMovies(movie);
@@ -37,6 +41,7 @@ public class WatchListController {
     }
 
     @DeleteMapping("{imdbId}")
+    @Operation(security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<Void> deleteMovie(@PathVariable("imdbId") String imdbId) {
         try {
             watchListService.deleteMovieByImdbId(imdbId);

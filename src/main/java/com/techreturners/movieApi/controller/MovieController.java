@@ -2,6 +2,8 @@ package com.techreturners.movieApi.controller;
 
 import com.techreturners.movieApi.service.MovieService;
 import com.techreturners.movieApi.vo.Movies;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,9 +15,10 @@ public class MovieController {
     @Autowired
     MovieService movieService;
 
-    @GetMapping(path="byYear/{year}")
-    public ResponseEntity<?> getMovieByYear(@PathVariable("year") Long year,
-                                            @RequestParam(value = "page", defaultValue = "1") int page) {
+  @GetMapping(path = "byYear/{year}")
+  @Operation(security = @SecurityRequirement(name = "bearerAuth"))
+  public ResponseEntity<?> getMovieByYear(
+      @PathVariable("year") Long year, @RequestParam(value = "page", defaultValue = "1") int page) {
         Movies movies;
         try {
             movies = movieService.getMovieByYear(year, page);
@@ -26,6 +29,7 @@ public class MovieController {
     }
 
     @GetMapping({"order/byRating"})
+    @Operation(security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<?> getMovieOrderByRating(@RequestParam(value = "page", defaultValue = "1") int page) {
         Movies movies;
         try {
@@ -37,6 +41,7 @@ public class MovieController {
     }
 
     @GetMapping({"imdb_id/byTitle/{title}"})
+    @Operation(security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<?> getMovieIdByTitle(@PathVariable("title") String title) {
         Movies movies;
         try{
@@ -48,6 +53,7 @@ public class MovieController {
     }
 
     @GetMapping({"byGenre/{genre}"})
+    @Operation(security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<?> getMovieIdByGenre(@PathVariable("genre") String genre,
                                                @RequestParam(value = "page", defaultValue = "1") int page) {
         Movies movies;
