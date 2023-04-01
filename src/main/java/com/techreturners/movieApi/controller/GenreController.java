@@ -2,6 +2,8 @@ package com.techreturners.movieApi.controller;
 
 import com.techreturners.movieApi.service.GenreService;
 import com.techreturners.movieApi.vo.Genres;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +18,9 @@ public class GenreController {
     @Autowired
     GenreService genreService;
 
-    @GetMapping
-    public ResponseEntity<?> getAllGenres() {
+  @GetMapping
+  @Operation(security = @SecurityRequirement(name = "bearerAuth"))
+  public ResponseEntity<?> getAllGenres() {
         Genres genres;
         try {
             genres = genreService.getGenres();

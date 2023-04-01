@@ -2,6 +2,8 @@ package com.techreturners.movieApi.controller;
 
 import com.techreturners.movieApi.service.ActorService;
 import com.techreturners.movieApi.vo.Actors;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ public class ActorController {
     private ActorService actorService;
 
     @GetMapping(path = "{name}")
+    @Operation(security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<?> getActorsByName(@PathVariable("name") String name) {
         Actors actors;
         try {
