@@ -16,12 +16,12 @@ import org.springframework.context.annotation.Configuration;
     scheme = "bearer")
 public class SwaggerUiConfiguration {
 
-    @Bean
-    public OpenAPI customOpenAPI(@Value("${application-title}") String appTitle, @Value("${application-description}") String appDescription, @Value("${application-version}") String appVersion) {
-        return new OpenAPI()
-                .info(new Info()
-                        .title(appTitle)
-                        .version(appVersion)
-                        .description(appDescription));
-    }
+  @Bean
+  public OpenAPI customOpenAPI(
+      @Value("${application-title}") String appTitle,
+      @Value("${application-description}") String appDescription,
+      @Value("${application-version}") String appVersion) {
+    return new OpenAPI()
+        .info(new Info().title(appTitle).version(appVersion).description(appDescription));
+  }
 }

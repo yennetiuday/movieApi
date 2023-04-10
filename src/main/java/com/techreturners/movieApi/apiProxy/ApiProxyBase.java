@@ -1,6 +1,7 @@
 package com.techreturners.movieApi.apiProxy;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
@@ -16,8 +17,10 @@ public abstract class ApiProxyBase<T> {
     @Value("${x.rapidapi.key.value}")
     private String X_RAPIDAPI_KEY_VALUE;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
     protected T retrieveData(String apiUrl) throws IOException {
-        RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
 
         headers.set(X_RAPIDAPI_KEY, X_RAPIDAPI_KEY_VALUE);
